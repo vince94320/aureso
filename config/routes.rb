@@ -1,5 +1,3 @@
 Rails.application.routes.draw do
-  resources :models, only: [] do
-    resources :model_types, only: [:index]
-  end
+  get '/models/:model_slug/model_types' => 'model_types#index'
 end
