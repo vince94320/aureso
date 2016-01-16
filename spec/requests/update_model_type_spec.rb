@@ -5,7 +5,7 @@ describe 'Update model type' do
     serie_3  = create(:model, name: 'serie_3')
     bmw_330i = create(:model_type, model: serie_3, name: 'bmw_330i', model_type_code: 'qwerty', base_price: 170000)
 
-    get "/models/serie-3/model_types_price/bmw-330i"
+    post "/models/serie-3/model_types_price/bmw-330i"
 
     json = JSON.parse(response.body)
     p json
@@ -25,6 +25,6 @@ describe 'Update model type' do
     #       ]
     #     }
     #   ]
-    })
+    #})
   end
 end
