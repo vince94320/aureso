@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'API Model Types' do
-  it 'list of types for a specific model' do
+describe 'API Models' do
+  it 'list models and associated model_types' do
     serie_1  = create(:model, name: 'serie_1')
     bmw_116i = create(:model_type, model: serie_1, name: 'bmw_116i', model_type_code: 'qwerty', base_price: 170000)
     bmw_125i = create(:model_type, model: serie_1, name: 'bmw_125i', model_type_code: 'qwerty', base_price: 245000)
