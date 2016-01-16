@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe 'API Model Types' do
   it 'list of types for a specific model' do
-    get '/models/serie_1/model_types'
+    model = Model.create(name: 'Serie 1')
+    model_slug = 'serie_1'
+
+    get "/models/#{model_slug}/model_types"
     json = JSON.parse(response.body)
 
     expect(json).to eq({
