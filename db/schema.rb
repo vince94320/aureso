@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116023234) do
+ActiveRecord::Schema.define(version: 20160116025632) do
+
+  create_table "model_types", force: :cascade do |t|
+    t.integer "model_id",        null: false
+    t.string  "name",            null: false
+    t.string  "model_type_slug", null: false
+    t.string  "model_type_code", null: false
+    t.string  "base_price",      null: false
+  end
+
+  add_index "model_types", ["model_id"], name: "index_model_types_on_model_id"
+  add_index "model_types", ["model_type_slug"], name: "index_model_types_on_model_type_slug", unique: true
 
   create_table "models", force: :cascade do |t|
     t.string "name",       null: false
