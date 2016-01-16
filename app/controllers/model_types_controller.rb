@@ -1,2 +1,3 @@
 class ModelTypesController < ApplicationController
+
 end
