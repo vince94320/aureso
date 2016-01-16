@@ -5,6 +5,6 @@ class ModelType < ActiveRecord::Base
   validates_presence_of :model
 
   def total_price
-    45
+    (base_price + 10000.to_f).to_i
   end
 end
