@@ -6,5 +6,15 @@ FactoryGirl.define do
     factory :invalid_model do
       name nil
     end
+
+    factory :serie_1 do
+      organization { build(:bmw) }
+      name         'Serie 1'
+    end
+
+    factory :serie_3 do
+      organization { build(:bmw) }
+      name         'Serie 3'
+    end
   end
 end

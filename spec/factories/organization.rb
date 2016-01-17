@@ -8,5 +8,9 @@ FactoryGirl.define do
     factory :invalid_organization do
       name nil
     end
+
+    factory :bmw do
+      name 'BMW'
+    end
   end
 end

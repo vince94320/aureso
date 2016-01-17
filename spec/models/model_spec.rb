@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe Model do
-  it 'infers the model slug based on the name' do
-    model = create(:model, name: 'Some Name')
+  it 'infers the model slug based on the name of the organization and the model name' do
+    bmw     = build(:organization, name: 'BMW')
+    serie_1 = build(:model, organization: bmw, name: 'Serie 1')
+    serie_1.save
 
-    expect(model.model_slug).to eq 'some-name'
+    expect(serie_1.model_slug).to eq 'bmw-serie-1'
   end
 
   it 'has many model_types' do

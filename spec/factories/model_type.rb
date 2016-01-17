@@ -8,5 +8,15 @@ FactoryGirl.define do
     factory :invalid_model_type do
       name nil
     end
+
+    factory :bmw_116i do
+      model { build(:serie_1) }
+      name '116i'
+    end
+
+    factory :bmw_330i do
+      model { build(:serie_3) }
+      name '330i'
+    end
   end
 end
