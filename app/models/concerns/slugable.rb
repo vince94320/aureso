@@ -9,7 +9,7 @@ module Slugable
 
   protected
   def set_slug
-    self.send("#{slug_attribute}=", slugify(name))
+    self.send("#{slug_attribute}=", slugify([organization_name, name]))
   end
 
   def slug_attribute
@@ -18,7 +18,8 @@ module Slugable
     end
   end
 
-  def slugify(string)
-    Slugifier.new.slugify(string)
+  def slugify(items)
+    slugifier = Slugifier.new
+    items.map{|i| slugifier.slugify(i) }.join('-')
   end
 end

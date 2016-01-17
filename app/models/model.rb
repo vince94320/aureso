@@ -5,4 +5,6 @@ class Model < ActiveRecord::Base
   has_many :model_types
 
   validates_presence_of :organization
+
+  delegate :name, to: :organization, prefix: true, allow_nil: true
 end
