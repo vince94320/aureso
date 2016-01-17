@@ -22,5 +22,4 @@ class OrganizationType
   def invalid?
     !valid?
   end
-
 end

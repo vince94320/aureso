@@ -11,6 +11,6 @@ class ModelType < ActiveRecord::Base
   end
 
   def total_price
-    (base_price + 10000.to_f).to_i
+    base_price + 10000
   end
 end
