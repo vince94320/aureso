@@ -5,13 +5,13 @@ describe 'Update model type' do
     bmw      = create(:bmw, pricing_policy: 'Fixed')
     serie_1  = create(:model, organization: bmw, name: 'serie_1')
     bmw_330i = create(:bmw_330i, model: serie_1, base_price: 170000)
-    post '/models/serie-3/model_types_price/bmw-330i'
+    post '/models/serie-3/model_types_price/bmw-330i', model_type: { base_price: 200000 }
 
     expect(json_response).to eq({
       'model_type' => {
         'name' => '330i',
-        'base_price' => 170000,
-        'total_price' => 170005
+        'base_price' => 200000,
+        'total_price' => 200005
       }
     })
   end
