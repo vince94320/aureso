@@ -2,26 +2,24 @@ class Organization < ActiveRecord::Base
   has_many :models
 
   validates_presence_of :name, :public_name
-  validate :valid_organization_type
-  validate :valid_pricing_policy
+  validate :validate_organization_kind
+  validate :validate_pricing_policy
 
   def pricing_policy
     PricingPolicy.build(attributes['pricing_policy'])
   end
 
   private
-  def valid_pricing_policy
+  def validate_pricing_policy
     begin
-      PricingPolicy.build(attributes['pricing_policy'])
+      pricing_policy
     rescue
       errors.add(:pricing_policy, 'is not a valid policy')
     end
   end
 
-  def valid_organization_type
-    organization_type = OrganizationKind.new(kind: kind)
-
-    if organization_type.invalid?
+  def validate_organization_kind
+    unless OrganizationKind.is_valid? kind
       errors.add(:kind, 'is not a valid organization type')
     end
   end
