@@ -1,4 +1,6 @@
 class Organization < ActiveRecord::Base
+  has_many :models
+
   validate :valid_organization_type
   validate :valid_pricing_policy
 
@@ -10,10 +12,10 @@ class Organization < ActiveRecord::Base
   end
 
   def valid_organization_type
-    organization_type = OrganizationType.new(type: type)
+    organization_type = OrganizationKind.new(kind: kind)
 
     if organization_type.invalid?
-      errors.add(:type, 'is not a valid organization type')
+      errors.add(:kind, 'is not a valid organization type')
     end
   end
 end
