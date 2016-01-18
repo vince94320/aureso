@@ -8,12 +8,12 @@ FactoryGirl.define do
     end
 
     factory :serie_1 do
-      organization { build(:bmw) }
+      organization { create(:bmw) }
       name         'Serie 1'
     end
 
     factory :serie_3 do
-      organization { build(:bmw) }
+      organization { create(:bmw) }
       name         'Serie 3'
     end
   end

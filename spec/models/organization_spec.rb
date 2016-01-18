@@ -11,7 +11,7 @@ describe Organization do
 
   it 'should have a valid pricing policy' do
     bmw  = build(:organization, pricing_policy: 'invalid policy')
-    ford = build(:organization, pricing_policy: PricingPolicy.random)
+    ford = build(:organization, pricing_policy: PricingPolicy.sample_name)
 
     expect(bmw).not_to be_valid
     expect(ford).to be_valid

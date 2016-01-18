@@ -6,7 +6,9 @@ class Organization < ActiveRecord::Base
 
   private
   def valid_pricing_policy
-    unless PricingPolicy.valid_policy? pricing_policy
+    begin
+      PricingPolicy.build(pricing_policy)
+    rescue
       errors.add(:pricing_policy, 'is not a valid policy')
     end
   end
