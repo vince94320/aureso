@@ -27,4 +27,9 @@ describe Model do
     expect(serie_1.organization).to eq bmw
     expect(serie_3).to_not be_valid
   end
+
+  it 'is invalid without a name' do
+    expect(build(:organization, name: 'Ford')).to be_valid
+    expect(build(:organization, name: '')).to be_invalid
+  end
 end

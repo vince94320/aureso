@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
   has_many :models
 
+  validates_presence_of :name, :public_name
   validate :valid_organization_type
   validate :valid_pricing_policy
 

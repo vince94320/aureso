@@ -24,4 +24,19 @@ describe ModelType do
 
     expect(found_model_type).to eq bmw_116i
   end
+
+  it 'is invalid without a name' do
+    expect(build(:model_type, name: 'Serie 5')).to be_valid
+    expect(build(:model_type, model: create(:serie_1), name: '')).to be_invalid
+  end
+
+  it 'is invalid without a model type code' do
+    expect(build(:model_type, model_type_code: '12345')).to be_valid
+    expect(build(:model_type, model: create(:serie_1), model_type_code: '')).to be_invalid
+  end
+
+  it 'is invalid without a base price' do
+    expect(build(:model_type, base_price: 120000)).to be_valid
+    expect(build(:model_type, model: create(:serie_1), base_price: nil)).to be_invalid
+  end
 end

@@ -10,12 +10,12 @@ FactoryGirl.define do
     end
 
     factory :bmw_116i do
-      model { build(:serie_1) }
+      model { create(:serie_1) }
       name '116i'
     end
 
     factory :bmw_330i do
-      model { build(:serie_3) }
+      model { create(:serie_3) }
       name '330i'
     end
   end

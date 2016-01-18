@@ -4,7 +4,7 @@ class Model < ActiveRecord::Base
   belongs_to :organization
   has_many :model_types
 
-  validates_presence_of :organization
+  validates_presence_of :organization, :name
 
   delegate :name, to: :organization, prefix: true, allow_nil: true
   delegate :pricing_policy, to: :organization, prefix: true, allow_nil: true
