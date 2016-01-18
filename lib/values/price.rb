@@ -17,4 +17,8 @@ class Price
   def +(other)
     Price.new(other.value + value)
   end
+
+  def to_s
+    value
+  end
 end

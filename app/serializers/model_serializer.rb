@@ -1,8 +1,16 @@
-class ModelTypeSerializer < ActiveModel::Serializer
-  attributes :name, :total_price
-end
+class ModelSerializer
+  include Serializer
 
-class ModelSerializer < ActiveModel::Serializer
-  attributes :name
-  has_many :model_types
+  protected
+  def build(model)
+    {
+      name: model.name,
+      model_types: model.model_types.map do |model_type|
+        {
+          name: model_type.name,
+          total_price: model_type.total_price.to_s
+        }
+      end
+    }
+  end
 end

@@ -11,7 +11,11 @@ class ModelType < ActiveRecord::Base
     find_by(model_type_slug: slug)
   end
 
+  def base_price
+    Price.new(attributes['base_price'])
+  end
+
   def total_price
-    base_price + 10000
+    organization_pricing_policy.total_price(base_price)
   end
 end

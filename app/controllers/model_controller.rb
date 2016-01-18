@@ -1,10 +1,5 @@
 class ModelController < ApplicationController
   def index
-    render json: all_models, root: 'models'
-  end
-
-  private
-  def all_models
-    Model.all
+    render json: ModelSerializer.serialize(Model.all, root: 'models')
   end
 end
