@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117015331) do
+ActiveRecord::Schema.define(version: 20160118030346) do
 
   create_table "model_types", force: :cascade do |t|
     t.integer "model_id",        null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160117015331) do
   create_table "organizations", force: :cascade do |t|
     t.string "name",           null: false
     t.string "public_name",    null: false
-    t.string "type",           null: false
+    t.string "kind",           null: false
     t.string "pricing_policy", null: false
   end
 
