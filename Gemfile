@@ -13,8 +13,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'active_model_serializers'
 gem 'mechanize'
+gem 'puma'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'byebug'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
