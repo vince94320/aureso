@@ -78,6 +78,22 @@ class FixedPricingPolicy < PricingPolicy
   end
 end
 
+class PrestigePricingPolicy < PricingPolicy
+  def margin
+    find_nodes('pubDate').size
+  end
+
+  def total_price
+    base_price + Price.new(margin)
+  end
+
+  protected
+  def find_nodes(string)
+    agent.get('http://www.yourlocalguardian.co.uk/sport/rugby/rss/')
+         .search("//#{string}")
+  end
+end
+
 describe FlexiblePricingPolicy, vcr: true do
   let(:base_price) { Price.new(100000) }
   let(:sut)        { described_class.new(base_price: base_price) }
@@ -88,10 +104,19 @@ describe FlexiblePricingPolicy, vcr: true do
 end
 
 describe FixedPricingPolicy, vcr: true do
-  let(:base_price) { Price.new(100000) }
+  let(:base_price) { Price.new(120500) }
   let(:sut)        { described_class.new(base_price: base_price) }
 
   it 'calculates the total price by add the base price to the margin' do
-    expect(sut.total_price).to eq Price.new(100005)
+    expect(sut.total_price).to eq Price.new(120505)
+  end
+end
+
+describe PrestigePricingPolicy, vcr: true do
+  let(:base_price) { Price.new(140000) }
+  let(:sut)        { described_class.new(base_price: base_price) }
+
+  it 'calculates the total price by add the base price to the margin' do
+    expect(sut.total_price).to eq Price.new(140051)
   end
 end
