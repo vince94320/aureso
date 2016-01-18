@@ -4,9 +4,7 @@ class Organization < ActiveRecord::Base
 
   private
   def valid_pricing_policy
-    policy = PricingPolicy.new(policy: pricing_policy)
-
-    if policy.invalid?
+    unless PricingPolicy.valid_policy? pricing_policy
       errors.add(:pricing_policy, 'is not a valid policy')
     end
   end

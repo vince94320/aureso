@@ -9,6 +9,9 @@ module Aureso
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths += %W(
       #{config.root}/lib
+      #{config.root}/lib/pricing_policies
+      #{config.root}/lib/roles
+      #{config.root}/lib/values
     )
   end
 end
