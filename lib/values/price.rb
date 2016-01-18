@@ -9,9 +9,9 @@ class Price
     other.value == value
   end
 
-  def *(other)
-    total = (value * other.value).ceil
-    Price.new(total)
+  def *(multiplicator)
+    new_value = (value * multiplicator).ceil
+    Price.new(new_value)
   end
 
   def +(other)

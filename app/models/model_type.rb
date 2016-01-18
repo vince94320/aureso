@@ -12,7 +12,6 @@ class ModelType < ActiveRecord::Base
   end
 
   def total_price
-    pricing_policy = PricingPolicy.build(organization_pricing_policy)
     base_price + 10000
   end
 end

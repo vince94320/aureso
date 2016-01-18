@@ -4,10 +4,14 @@ class Organization < ActiveRecord::Base
   validate :valid_organization_type
   validate :valid_pricing_policy
 
+  def pricing_policy
+    PricingPolicy.build(attributes['pricing_policy'])
+  end
+
   private
   def valid_pricing_policy
     begin
-      PricingPolicy.build(pricing_policy)
+      PricingPolicy.build(attributes['pricing_policy'])
     rescue
       errors.add(:pricing_policy, 'is not a valid policy')
     end

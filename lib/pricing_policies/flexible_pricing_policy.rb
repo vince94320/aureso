@@ -5,8 +5,8 @@ class FlexiblePricingPolicy
     find_nodes('a').size.to_f / 100
   end
 
-  def total_price
-    base_price * Price.new(margin)
+  def total_price(base_price)
+    base_price * margin
   end
 
   protected

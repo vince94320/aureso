@@ -5,7 +5,7 @@ class FixedPricingPolicy
     find_nodes('status').size
   end
 
-  def total_price
+  def total_price(base_price)
     base_price + Price.new(margin)
   end
 
